@@ -58,14 +58,14 @@ const createDeckFromData = (data: CardData[]): Card[] => {
 
 
 const DEFAULT_DECK_DATA: CardData[] = [
-    { id: 1, type: CardType.BASIC, name: 'Basic Card', imageUrl: './cards/.png' },
-    { id: 2, type: CardType.BASIC, name: 'Basic Card', imageUrl: './cards/.png' },
-    { id: 3, type: CardType.BASIC, name: 'Basic Card', imageUrl: './cards/.png' },
-    { id: 4, type: CardType.UNIQUE, name: 'Unique Card', imageUrl: './cards/.png' },
-    { id: 5, type: CardType.UNIQUE, name: 'Unique Card', imageUrl: './cards/.png' },
-    { id: 6, type: CardType.UNIQUE, name: 'Unique Card', imageUrl: './cards/.png' },
-    { id: 7, type: CardType.UNIQUE, name: 'Unique Card', imageUrl: './cards/.png' },
-    { id: 8, type: CardType.UNIQUE, name: 'Ultimate Card', isUltimate: true, './cards/.png' },
+    { id: 1, type: CardType.BASIC, name: 'Basic Card', imageUrl: './cards/name.png' },
+    { id: 2, type: CardType.BASIC, name: 'Basic Card', imageUrl: './cards/name.png' },
+    { id: 3, type: CardType.BASIC, name: 'Basic Card', imageUrl: './cards/name.png' },
+    { id: 4, type: CardType.UNIQUE, name: 'Unique Card', imageUrl: './cards/name.png' },
+    { id: 5, type: CardType.UNIQUE, name: 'Unique Card', imageUrl: './cards/name.png' },
+    { id: 6, type: CardType.UNIQUE, name: 'Unique Card', imageUrl: './cards/name.png' },
+    { id: 7, type: CardType.UNIQUE, name: 'Unique Card', imageUrl: './cards/name.png' },
+    { id: 8, type: CardType.UNIQUE, name: 'Ultimate Card', isUltimate: true, './cards/name.png' },
 ];
 
 const MIKA_DECK_DATA: CardData[] = [
@@ -80,14 +80,14 @@ const MIKA_DECK_DATA: CardData[] = [
 ];
 
 const HARU_DECK_DATA: CardData[] = [
-    { id: 1, type: CardType.BASIC, name: 'Anchor', imageUrl: './cards/.png' },
-    { id: 2, type: CardType.BASIC, name: 'Power Anchor', imageUrl: './cards/.png' },
-    { id: 3, type: CardType.BASIC, name: 'Anchor Drop', imageUrl: './cards/.png' },
-    { id: 4, type: CardType.UNIQUE, name: 'Anchor Shot', imageUrl: './cards/.png' },
-    { id: 5, type: CardType.UNIQUE, name: 'Anchor Pointer', imageUrl: './cards/.png' },
-    { id: 6, type: CardType.UNIQUE, name: 'Power Charge', imageUrl: './cards/.png' },
-    { id: 7, type: CardType.UNIQUE, name: 'Charge Energy', imageUrl: './cards/.png' },
-    { id: 8, type: CardType.UNIQUE, name: 'Lift Anchor', isUltimate: true, imageUrl: './cards/.png' },
+    { id: 1, type: CardType.BASIC, name: 'Anchor', imageUrl: './cards/name.png' },
+    { id: 2, type: CardType.BASIC, name: 'Power Anchor', imageUrl: './cards/name.png' },
+    { id: 3, type: CardType.BASIC, name: 'Anchor Drop', imageUrl: './cards/name.png' },
+    { id: 4, type: CardType.UNIQUE, name: 'Anchor Shot', imageUrl: './cards/name.png' },
+    { id: 5, type: CardType.UNIQUE, name: 'Anchor Pointer', imageUrl: './cards/name.png' },
+    { id: 6, type: CardType.UNIQUE, name: 'Power Charge', imageUrl: './cards/name.png' },
+    { id: 7, type: CardType.UNIQUE, name: 'Charge Energy', imageUrl: './cards/name.png' },
+    { id: 8, type: CardType.UNIQUE, name: 'Lift Anchor', isUltimate: true, imageUrl: './cards/name.png' },
 ];
 
 export const DEFAULT_DECK: Card[] = createDeckFromData(DEFAULT_DECK_DATA);
