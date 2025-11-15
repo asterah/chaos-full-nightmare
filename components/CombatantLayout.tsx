@@ -161,9 +161,9 @@ const CombatantLayout: React.FC<CombatantLayoutProps> = ({
         if (updatedCard.state === CardState.NONE) {
             description = `Remove ${formatStateName(oldCard.state)} from ${cardBaseName}`;
         } else if (oldCard.state === CardState.NONE) {
-            description = `Add ${formatStateName(updatedCard.state)} to ${cardBaseName}`;
+            description = `${formatStateName(updatedCard.state)} to ${cardBaseName}`;
         } else {
-            description = `Change ${cardBaseName} to ${formatStateName(updatedCard.state)}`;
+            description = `Convert ${cardBaseName} to ${formatStateName(updatedCard.state)}`;
         }
     }
     updateGameStateAndLog(updater, description);
