@@ -129,12 +129,12 @@ const CalculatorCard: React.FC<CalculatorCardProps> = ({ card, isLast, onUpdate,
   } : {};
   
   const titleColorStylesWithImage = {
-    [CardType.BASIC]: 'text-gray-200',
-    [CardType.UNIQUE]: 'text-sky-400',
+    [CardType.BASIC]: 'text-white',
+    [CardType.UNIQUE]: 'text-sky-300',
     [CardType.NEUTRAL]: 'text-stone-300',
-    [CardType.MONSTER]: 'text-fuchsia-400',
+    [CardType.MONSTER]: 'text-rose-500',
     [CardType.FORBIDDEN]: 'text-red-500',
-    ULTIMATE: 'text-violet-400',
+    ULTIMATE: 'text-fuchsia-400',
   };
 
   const getTitleClassName = () => {
@@ -151,7 +151,7 @@ const CalculatorCard: React.FC<CalculatorCardProps> = ({ card, isLast, onUpdate,
       style={backgroundStyle}
     >
       {hasImage && (
-        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.5)_0%,transparent_15%,transparent_50%,rgba(0,0,0,0.7)_100%)] rounded-lg"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.8)_0%,transparent_15%,transparent_50%,rgba(0,0,0,0.9)_100%)] rounded-lg"></div>
       )}
 
       {card.type === CardType.NEUTRAL && (
