@@ -133,8 +133,6 @@ const CalculatorCard: React.FC<CalculatorCardProps> = ({ card, isLast, onUpdate,
       className={`${cardStyles.base} ${isLast ? cardStyles.ULTIMATE : cardStyles[card.type]} ${stateStyles[card.state]}`}
       style={backgroundStyle}
     >
-      {hasImage && <div className="absolute inset-0 bg-black/40 rounded-lg pointer-events-none"></div>}
-      
       {card.type === CardType.NEUTRAL && (
         <div className="group absolute top-2 right-2 z-20">
           <button
@@ -150,12 +148,18 @@ const CalculatorCard: React.FC<CalculatorCardProps> = ({ card, isLast, onUpdate,
         </div>
       )}
 
-      <div className={`relative z-10 flex flex-col justify-between h-full ${hasImage ? 'text-white' : ''}`}>
-        <div className="text-center min-h-[3rem]">
-          <p className="font-bold text-sm sm:text-base">{cardTitle}</p>
-          <p className={`text-xs capitalize ${card.state === CardState.NONE ? (hasImage ? 'opacity-75' : 'opacity-50') : ''}`}>
-            {card.state.replace('_', ' ')}
-          </p>
+      <div className="relative z-10 flex flex-col justify-between h-full">
+        <div className="text-center min-h-[3rem] flex flex-col justify-center items-center">
+            <p className={`font-bold text-sm sm:text-base ${hasImage ? 'text-white drop-shadow-[0_1.5px_1px_rgba(0,0,0,0.8)]' : ''}`}>
+              {cardTitle}
+            </p>
+            <p className={`text-xs capitalize ${
+              hasImage
+                ? `text-white/90 drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] ${card.state !== CardState.NONE ? 'font-semibold' : ''}`
+                : card.state === CardState.NONE ? 'opacity-50' : ''
+            }`}>
+              {card.state.replace('_', ' ')}
+            </p>
         </div>
 
         <div className="flex-grow my-2 flex items-center justify-center min-h-0">
