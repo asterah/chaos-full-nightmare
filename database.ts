@@ -65,7 +65,7 @@ const DEFAULT_DECK_DATA: CardData[] = [
     { id: 5, type: CardType.UNIQUE, name: 'Unique Card', imageUrl: './cards/name.png' },
     { id: 6, type: CardType.UNIQUE, name: 'Unique Card', imageUrl: './cards/name.png' },
     { id: 7, type: CardType.UNIQUE, name: 'Unique Card', imageUrl: './cards/name.png' },
-    { id: 8, type: CardType.UNIQUE, name: 'Ultimate Card', isUltimate: true, './cards/name.png' },
+    { id: 8, type: CardType.UNIQUE, name: 'Ultimate Card', isUltimate: true, imageUrl: './cards/name.png' },
 ];
 
 const MIKA_DECK_DATA: CardData[] = [
