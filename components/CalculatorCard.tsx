@@ -134,7 +134,7 @@ const CalculatorCard: React.FC<CalculatorCardProps> = ({ card, isLast, onUpdate,
       style={backgroundStyle}
     >
       {hasImage && (
-        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.1)_0%,transparent_10%,transparent_60%,rgba(0,0,0,0.7)_100%)] rounded-lg"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.7)_0%,transparent_10%,transparent_60%,rgba(0,0,0,0.7)_100%)] rounded-lg"></div>
       )}
 
       {card.type === CardType.NEUTRAL && (
