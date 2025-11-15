@@ -8,6 +8,7 @@ interface ScoreDisplayProps {
   onReset: () => void;
   onUndo: () => void;
   isUndoDisabled: boolean;
+  isResetDisabled: boolean;
   isFreeRemoveUsed: boolean;
   isFreeDuplicateUsed: boolean;
 }
@@ -28,6 +29,7 @@ const ScoreDisplay: React.FC<ScoreDisplayProps> = ({
   onReset, 
   onUndo, 
   isUndoDisabled,
+  isResetDisabled,
   isFreeRemoveUsed,
   isFreeDuplicateUsed
 }) => {
@@ -67,7 +69,8 @@ const ScoreDisplay: React.FC<ScoreDisplayProps> = ({
           </button>
           <button
             onClick={onReset}
-            className="px-3 py-2 bg-red-600 text-white font-semibold rounded-md flex items-center gap-2 transition-colors duration-200 hover:bg-red-500"
+            disabled={isResetDisabled}
+            className="px-3 py-2 bg-red-600 text-white font-semibold rounded-md flex items-center gap-2 transition-opacity duration-200 disabled:opacity-50 hover:enabled:bg-red-500"
             aria-label="Reset calculator"
           >
             <ResetIcon className="h-5 w-5" />

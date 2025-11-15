@@ -1,7 +1,9 @@
+
 import React, { useState, useMemo, useEffect } from 'react';
 import { GameState, getInitialGameState } from './state';
 import CombatantLayout from './components/CombatantLayout';
-import { ThemeIcon } from './components/Icons';
+import { GitHubIcon, ThemeIcon } from './components/Icons';
+import { COMBATANTS } from './database';
 
 type Theme = 'light' | 'dark';
 
@@ -18,6 +20,7 @@ const App: React.FC = () => {
   const [combatantsHistories, setCombatantsHistories] = useState<GameState[][]>([
     [getInitialGameState()]
   ]);
+  const [selectedCombatants, setSelectedCombatants] = useState<string[]>(['default']);
   
   useEffect(() => {
     if (theme === 'dark') {
@@ -28,18 +31,20 @@ const App: React.FC = () => {
   }, [theme]);
   
   useEffect(() => {
-    setCombatantsHistories(currentHistories => {
-      const newHistories = [...currentHistories];
-      const diff = combatantCount - newHistories.length;
-      if (diff > 0) {
-        for (let i = 0; i < diff; i++) {
-          newHistories.push([getInitialGameState()]);
-        }
-      } else if (diff < 0) {
-        return newHistories.slice(0, combatantCount);
+    const diff = combatantCount - combatantsHistories.length;
+    if (diff > 0) {
+      const newHistories = [...combatantsHistories];
+      const newSelections = [...selectedCombatants];
+      for (let i = 0; i < diff; i++) {
+        newHistories.push([getInitialGameState()]);
+        newSelections.push('default');
       }
-      return newHistories;
-    });
+      setCombatantsHistories(newHistories);
+      setSelectedCombatants(newSelections);
+    } else if (diff < 0) {
+      setCombatantsHistories(current => current.slice(0, combatantCount));
+      setSelectedCombatants(current => current.slice(0, combatantCount));
+    }
   }, [combatantCount]);
 
   const scoreLimit = useMemo(() => 30 + (tier - 1) * 10, [tier]);
@@ -54,6 +59,19 @@ const App: React.FC = () => {
       newHistories[index] = newHistory;
       return newHistories;
     });
+  };
+
+  const handleCharacterChange = (index: number, combatantId: string) => {
+    const selectedCombatant = COMBATANTS.find(c => c.id === combatantId);
+    if (!selectedCombatant) return;
+
+    setSelectedCombatants(current => {
+        const newSelections = [...current];
+        newSelections[index] = combatantId;
+        return newSelections;
+    });
+
+    handleHistoryChange(index, [getInitialGameState(selectedCombatant.deck)]);
   };
 
   const combatantGridClasses = {
@@ -103,7 +121,7 @@ const App: React.FC = () => {
               
               {/* Text Size Slider */}
               <div className="flex items-center gap-2">
-                <label htmlFor="text-size-slider" className="font-bold text-sm text-black dark:text-white whitespace-nowrap">Btn Text</label>
+                <label htmlFor="text-size-slider" className="font-bold text-sm text-black dark:text-white whitespace-nowrap">Button Text</label>
                 <input
                   id="text-size-slider"
                   type="range"
@@ -117,8 +135,16 @@ const App: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex-1 flex justify-end">
-              {/* Theme Toggle */}
+            <div className="flex-1 flex justify-end items-center gap-2">
+               <a
+                href="https://github.com/asterah/chaos-full-nightmare"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 bg-gray-200 dark:bg-gray-700 rounded-md transition-colors duration-200 hover:bg-gray-300 dark:hover:bg-gray-600"
+                aria-label="View source on GitHub"
+              >
+                <GitHubIcon className="h-5 w-5" />
+              </a>
               <button
                 onClick={handleThemeToggle}
                 className="p-2 bg-gray-200 dark:bg-gray-700 rounded-md transition-colors duration-200 hover:bg-gray-300 dark:hover:bg-gray-600"
@@ -141,6 +167,9 @@ const App: React.FC = () => {
             scoreLimit={scoreLimit}
             combatantCount={combatantCount}
             buttonTextSize={buttonTextSize}
+            combatants={COMBATANTS}
+            selectedCombatantId={selectedCombatants[index]}
+            onCharacterChange={handleCharacterChange}
           />
         ))}
       </main>

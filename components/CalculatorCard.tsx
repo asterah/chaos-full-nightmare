@@ -1,6 +1,7 @@
+
 import React from 'react';
-import { Card, CardState, CardType } from '../types';
-import { ArrowPathIcon, MinusCircleIcon, SparklesIcon, Square2StackIcon, StarIcon } from './Icons';
+import { Card, CardEffect, CardState, CardType } from '../types';
+import { ArrowPathIcon, MinusCircleIcon, SparklesIcon, Square2StackIcon, StarIcon, XIcon } from './Icons';
 
 interface CalculatorCardProps {
   card: Card;
@@ -9,11 +10,12 @@ interface CalculatorCardProps {
   onRemove: (cardId: number) => void;
   onDuplicate: (card: Card) => void;
   onConvert: (cardId: number) => void;
+  onDiscard: (cardId: number) => void;
   buttonTextSize: number;
 }
 
 const cardStyles = {
-  base: 'aspect-[2/3] w-full max-w-[280px] mx-auto rounded-lg shadow-lg p-3 flex flex-col justify-between transition-all duration-300 border-2 overflow-hidden',
+  base: 'aspect-[2/3] w-full max-w-[280px] mx-auto rounded-lg shadow-lg p-3 flex flex-col justify-between transition-all duration-300 border-2 relative',
   [CardType.BASIC]: 'bg-gray-200 border-gray-300 text-gray-800 dark:bg-gray-700 dark:border-gray-600 dark:text-white',
   [CardType.UNIQUE]: 'bg-blue-200 border-blue-400 text-blue-900 dark:bg-blue-900/50 dark:border-blue-700 dark:text-white',
   [CardType.NEUTRAL]: 'bg-stone-300 border-stone-400 text-stone-900 dark:bg-stone-600 dark:border-stone-500 dark:text-white',
@@ -29,7 +31,7 @@ const stateStyles = {
 };
 
 const buttonStyles = {
-  base: 'w-full font-semibold py-1.5 px-2 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900',
+  base: 'font-semibold py-1.5 px-2 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 flex items-center justify-center gap-1.5',
   enabled: 'hover:bg-opacity-80',
   disabled: 'opacity-50 cursor-not-allowed',
 };
@@ -41,29 +43,34 @@ const ActionButton: React.FC<{
   icon: React.ReactNode;
   textSize: number;
   disabled?: boolean;
-}> = ({ onClick, label, color, disabled = false, icon, textSize }) => (
+  className?: string;
+}> = ({ onClick, label, color, disabled = false, icon, textSize, className }) => (
   <button
     onClick={onClick}
     disabled={disabled}
     style={{ fontSize: `${textSize}px` }}
     className={`${buttonStyles.base} ${color} ${
       disabled ? buttonStyles.disabled : buttonStyles.enabled
-    } flex items-center justify-center gap-1.5`}
+    } ${className || ''}`}
   >
     {icon}
-    <span className="truncate">{label}</span>
+    <span className="min-w-0 truncate">{label}</span>
   </button>
 );
 
 
-const CalculatorCard: React.FC<CalculatorCardProps> = ({ card, isLast, onUpdate, onRemove, onDuplicate, onConvert, buttonTextSize }) => {
+const CalculatorCard: React.FC<CalculatorCardProps> = ({ card, isLast, onUpdate, onRemove, onDuplicate, onConvert, onDiscard, buttonTextSize }) => {
   const isEpiphanyDisabled = card.type === CardType.BASIC || isLast;
+  const isDuplicatable = card.type !== CardType.BASIC && !card.effects?.includes(CardEffect.UNIQUE);
+  const isStateLocked = card.state === CardState.EPIPHANY || card.state === CardState.DIVINE_EPIPHANY;
 
   const handleStateChange = (newState: CardState) => {
-    const currentState = card.state;
+    if (isStateLocked) {
+      return; // State is locked, do nothing
+    }
     onUpdate({
       ...card,
-      state: currentState === newState ? CardState.NONE : newState,
+      state: newState,
     });
   };
   
@@ -71,57 +78,112 @@ const CalculatorCard: React.FC<CalculatorCardProps> = ({ card, isLast, onUpdate,
     onConvert(card.id);
   };
 
-  const cardTitle = isLast ? 'Ultimate' : card.type;
+  const cardTitle = card.name || (isLast ? 'Ultimate' : card.type);
+
+  const actionButtons = [];
+  actionButtons.push(
+    <ActionButton 
+      key="convert"
+      label="Convert"
+      color="bg-gray-300 text-black"
+      onClick={handleConvert}
+      disabled={card.type === CardType.NEUTRAL}
+      icon={<ArrowPathIcon className="w-4 h-4 flex-shrink-0" />}
+      textSize={buttonTextSize}
+    />
+  );
+  if (isDuplicatable) {
+    actionButtons.push(
+      <ActionButton 
+        key="duplicate"
+        label="Duplicate"
+        color="bg-purple-600 text-white"
+        onClick={() => onDuplicate(card)}
+        icon={<Square2StackIcon className="w-4 h-4 flex-shrink-0" />}
+        textSize={buttonTextSize}
+      />
+    );
+  }
+  actionButtons.push(
+    <ActionButton 
+      key="remove"
+      label="Remove"
+      color="bg-red-600 text-white"
+      onClick={() => onRemove(card.id)}
+      icon={<MinusCircleIcon className="w-4 h-4 flex-shrink-0" />}
+      textSize={buttonTextSize}
+    />
+  );
+  
+  const hasImage = !!card.imageUrl;
+
+  const backgroundStyle = hasImage ? {
+      backgroundImage: `linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%), url("${card.imageUrl}")`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+  } : {};
+
+  const imageTextClasses = hasImage ? 'text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]' : '';
 
   return (
-    <div className={`${cardStyles.base} ${isLast ? cardStyles.ULTIMATE : cardStyles[card.type]} ${stateStyles[card.state]}`}>
+    <div 
+      className={`${cardStyles.base} ${isLast ? cardStyles.ULTIMATE : cardStyles[card.type]} ${stateStyles[card.state]} ${imageTextClasses}`}
+      style={backgroundStyle}
+    >
+      {card.type === CardType.NEUTRAL && (
+        <div className="group absolute top-2 right-2 z-20">
+          <button
+            onClick={() => onDiscard(card.id)}
+            className="p-0.5 bg-gray-600/50 hover:bg-red-600 rounded-full text-white transition-colors"
+            aria-label="Discard Neutral Card"
+          >
+            <XIcon className="w-4 h-4" />
+          </button>
+          <div className="absolute right-full top-1/2 -translate-y-1/2 mr-2 w-max max-w-xs p-2 text-xs text-white bg-gray-900/90 dark:bg-black/90 rounded-md shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none">
+            Only click this if Neutral card has [Remove] effect
+          </div>
+        </div>
+      )}
       <div className="text-center min-h-[3rem]">
-        <p className="font-bold text-sm sm:text-base capitalize">{cardTitle}</p>
+        <p className="font-bold text-sm sm:text-base">{cardTitle}</p>
         <p className={`text-xs capitalize ${card.state === CardState.NONE ? 'opacity-50' : ''}`}>
           {card.state.replace('_', ' ')}
         </p>
       </div>
-      <div className="grid grid-rows-5 gap-1.5">
-        {!isEpiphanyDisabled ? (
-          <ActionButton 
-            label="Epiphany"
-            color="bg-yellow-500 text-black"
-            onClick={() => handleStateChange(CardState.EPIPHANY)}
-            icon={<StarIcon className="w-4 h-4 flex-shrink-0" />}
-            textSize={buttonTextSize}
-          />
-        ) : <div />}
-        {!isEpiphanyDisabled ? (
-          <ActionButton 
-            label="Divine Epiphany"
-            color="bg-cyan-500 text-black"
-            onClick={() => handleStateChange(CardState.DIVINE_EPIPHANY)}
-            icon={<SparklesIcon className="w-4 h-4 flex-shrink-0" />}
-            textSize={buttonTextSize}
-          />
-        ) : <div />}
-        <ActionButton 
-          label="Convert"
-          color="bg-gray-300 text-black"
-          onClick={handleConvert}
-          disabled={card.type === CardType.NEUTRAL}
-          icon={<ArrowPathIcon className="w-4 h-4 flex-shrink-0" />}
-          textSize={buttonTextSize}
-        />
-        <ActionButton 
-          label="Duplicate"
-          color="bg-purple-600 text-white"
-          onClick={() => onDuplicate(card)}
-          icon={<Square2StackIcon className="w-4 h-4 flex-shrink-0" />}
-          textSize={buttonTextSize}
-        />
-        <ActionButton 
-          label="Remove"
-          color="bg-red-600 text-white"
-          onClick={() => onRemove(card.id)}
-          icon={<MinusCircleIcon className="w-4 h-4 flex-shrink-0" />}
-          textSize={buttonTextSize}
-        />
+
+      <div className="flex-grow my-2 flex items-center justify-center min-h-0">
+        {/* This div is now just for spacing, keeping the layout consistent */}
+      </div>
+      
+      <div className="flex flex-col gap-1.5">
+        {!isEpiphanyDisabled && (
+          <div className="grid grid-cols-2 gap-1.5">
+            <ActionButton 
+              label="Epiphany"
+              color="bg-yellow-500 text-black"
+              onClick={() => handleStateChange(CardState.EPIPHANY)}
+              icon={<StarIcon className="w-4 h-4 flex-shrink-0" />}
+              textSize={buttonTextSize}
+              disabled={isStateLocked}
+            />
+            <ActionButton 
+              label="Divine"
+              color="bg-cyan-500 text-black"
+              onClick={() => handleStateChange(CardState.DIVINE_EPIPHANY)}
+              icon={<SparklesIcon className="w-4 h-4 flex-shrink-0" />}
+              textSize={buttonTextSize}
+              disabled={isStateLocked}
+            />
+          </div>
+        )}
+        <div className="grid grid-cols-2 gap-1.5">
+          {actionButtons.map((button, index) => {
+            if (actionButtons.length % 2 !== 0 && index === actionButtons.length - 1) {
+              return React.cloneElement(button, { className: 'col-span-2' });
+            }
+            return button;
+          })}
+        </div>
       </div>
     </div>
   );
