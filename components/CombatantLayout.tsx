@@ -88,6 +88,7 @@ const CombatantLayout: React.FC<CombatantLayoutProps> = ({ combatantIndex, histo
       ...cardToDuplicate,
       id: current.nextId,
       isUltimate: false,
+      isDuplicate: true,
     };
     updateGameState({
       cards: [...current.cards, newCard],
@@ -99,9 +100,10 @@ const CombatantLayout: React.FC<CombatantLayoutProps> = ({ combatantIndex, histo
   const totalScore = useMemo(() => {
     let score = 0;
     cards.forEach(card => {
-      const isNew = !initialCardIds.has(card.id);
+      const isNewlyAdded = !initialCardIds.has(card.id) && !card.isDuplicate;
       const isConvertedToNeutral = card.type === CardType.NEUTRAL && card.originalType !== CardType.NEUTRAL;
-      if (isNew) {
+      
+      if (isNewlyAdded) {
         if (card.type === CardType.UNIQUE) score += POINTS.UNIQUE_CARD;
         else if (card.type === CardType.MONSTER) score += POINTS.MONSTER_CARD;
         else if (card.type === CardType.NEUTRAL) score += POINTS.NEUTRAL_CARD;
@@ -109,6 +111,7 @@ const CombatantLayout: React.FC<CombatantLayoutProps> = ({ combatantIndex, histo
       } else if (isConvertedToNeutral) {
         score += POINTS.NEUTRAL_CARD;
       }
+
       if (card.type !== CardType.BASIC) {
         if (card.state === CardState.EPIPHANY && card.type !== CardType.UNIQUE) {
           score += POINTS.EPIPHANY_BONUS;
