@@ -1,3 +1,4 @@
+
 import { Card, CardType, CardState, Combatant, CardEffect } from './types';
 
 // Helper to generate dummy SVG images as base64 data URIs
@@ -8,12 +9,6 @@ export const generateDummyImage = (text: string, bgColor: string = '#4A5568', te
         </svg>
     `.trim();
     return `data:image/svg+xml;base64,${btoa(svg)}`;
-};
-
-// Helper to generate a standardized image path from a card name
-const nameToImagePath = (name: string): string => {
-    const fileName = name.toLowerCase().replace(/ /g, '-');
-    return `./cards/${fileName}.png`;
 };
 
 export const cardImageColors: Record<CardType, string> = {
@@ -58,41 +53,29 @@ const createDeckFromData = (data: CardData[]): Card[] => {
 
 
 const DEFAULT_DECK_DATA: CardData[] = [
-    { id: 1, type: CardType.BASIC, name: 'Basic Card', imageUrl: './cards/.png' },
-    { id: 2, type: CardType.BASIC, name: 'Basic Card', imageUrl: './cards/.png' },
-    { id: 3, type: CardType.BASIC, name: 'Basic Card', imageUrl: './cards/.png' },
-    { id: 4, type: CardType.UNIQUE, name: 'Unique Card', imageUrl: './cards/.png' },
-    { id: 5, type: CardType.UNIQUE, name: 'Unique Card', imageUrl: './cards/.png' },
-    { id: 6, type: CardType.UNIQUE, name: 'Unique Card', imageUrl: './cards/.png' },
-    { id: 7, type: CardType.UNIQUE, name: 'Unique Card', imageUrl: './cards/.png' },
-    { id: 8, type: CardType.UNIQUE, name: 'Ultimate Card', isUltimate: true, imageUrl: './cards/name.png' },
+    { id: 1, type: CardType.BASIC, name: 'Basic Card' },
+    { id: 2, type: CardType.BASIC, name: 'Basic Card' },
+    { id: 3, type: CardType.BASIC, name: 'Basic Card' },
+    { id: 4, type: CardType.UNIQUE, name: 'Unique Card' },
+    { id: 5, type: CardType.UNIQUE, name: 'Unique Card' },
+    { id: 6, type: CardType.UNIQUE, name: 'Unique Card' },
+    { id: 7, type: CardType.UNIQUE, name: 'Unique Card' },
+    { id: 8, type: CardType.UNIQUE, name: 'Ultimate Card', isUltimate: true },
 ];
 
 const MIKA_DECK_DATA: CardData[] = [
-    { id: 1, type: CardType.BASIC, name: 'Water Arrow', imageUrl: './cards/mika-1.png' },
-    { id: 2, type: CardType.BASIC, name: 'Water Arrow', imageUrl: './cards/mika-1.png' },
-    { id: 3, type: CardType.BASIC, name: 'Water Barrier', imageUrl: './cards/mika-3.png' },
-    { id: 4, type: CardType.UNIQUE, name: 'Source of Water', imageUrl: './cards/mika-4.png' },
-    { id: 5, type: CardType.UNIQUE, name: 'Blessing of Waves', imageUrl: './cards/mika-5.png' },
-    { id: 6, type: CardType.UNIQUE, name: 'Tactical Analysis', imageUrl: './cards/mika-6.png' },
-    { id: 7, type: CardType.UNIQUE, name: 'Whirlpool', imageUrl: './cards/mika-7.png' },
-    { id: 8, type: CardType.UNIQUE, name: 'Deluge', isUltimate: true, imageUrl: './cards/mika-8.png' },
-];
-
-const HARU_DECK_DATA: CardData[] = [
-    { id: 1, type: CardType.BASIC, name: 'Anchor', imageUrl: './cards/haru-1.png' },
-    { id: 2, type: CardType.BASIC, name: 'Power Anchor', imageUrl: './cards/haru-2.png' },
-    { id: 3, type: CardType.BASIC, name: 'Anchor Drop', imageUrl: './cards/haru-3.png' },
-    { id: 4, type: CardType.UNIQUE, name: 'Anchor Shot', imageUrl: './cards/haru-4.png' },
-    { id: 5, type: CardType.UNIQUE, name: 'Anchor Pointer', imageUrl: './cards/haru-5.png' },
-    { id: 6, type: CardType.UNIQUE, name: 'Power Charge', imageUrl: './cards/haru-6.png' },
-    { id: 7, type: CardType.UNIQUE, name: 'Charge Energy', imageUrl: './cards/haru-6.png' },
-    { id: 8, type: CardType.UNIQUE, name: 'Lift Anchor', isUltimate: true, imageUrl: './cards/haru-8.png' },
+    { id: 1, type: CardType.BASIC, name: 'Water Arrow' },
+    { id: 2, type: CardType.BASIC, name: 'Water Arrow' },
+    { id: 3, type: CardType.BASIC, name: 'Water Barrier' },
+    { id: 4, type: CardType.UNIQUE, name: 'Source of Water' },
+    { id: 5, type: CardType.UNIQUE, name: 'Blessing of Waves' },
+    { id: 6, type: CardType.UNIQUE, name: 'Tactical Analysis' },
+    { id: 7, type: CardType.UNIQUE, name: 'Whirlpool' },
+    { id: 8, type: CardType.UNIQUE, name: 'Deluge', isUltimate: true, imageUrl: './cards/deluge.png' },
 ];
 
 export const DEFAULT_DECK: Card[] = createDeckFromData(DEFAULT_DECK_DATA);
 const MIKA_DECK: Card[] = createDeckFromData(MIKA_DECK_DATA);
-const HARU_DECK: Card[] = createDeckFromData(HARU_DECK_DATA);
 
 export const COMBATANTS: Combatant[] = [
     {
@@ -104,10 +87,5 @@ export const COMBATANTS: Combatant[] = [
         id: 'mika',
         name: 'Mika',
         deck: MIKA_DECK,
-    },
-    {
-        id: 'haru',
-        name: 'Haru',
-        deck: HARU_DECK,
     },
 ];
