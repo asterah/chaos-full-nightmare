@@ -1,0 +1,5 @@
+{
+  "name": "Save Data Calculator",
+  "description": "A calculator to determine the points for a save data configuration based on a complex set of rules including card types, states, duplications, removals, and conversions.",
+  "requestFramePermissions": []
+}
