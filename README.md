@@ -2,7 +2,7 @@ Future plan if I continue this project:
 
 0% Flip the image when duplicated
 0% Add Eiphany icon
-80% Finish combatant card database (cards name left)
+100% Finish combatant card database
 100% Backup png, change all image to webp to improve speed
 0% Impliment ladder count
 0% Add redo button
