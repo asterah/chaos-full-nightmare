@@ -303,7 +303,7 @@ const SELENA_DECK = createDeckFromData(SELENA_DECK_DATA);
 const TRESSA_DECK = createDeckFromData(TRESSA_DECK_DATA);
 const YUKI_DECK = createDeckFromData(YUKI_DECK_DATA);
 const COMBATANTS = [
-    { id: 'default', name: 'Default', deck: DEFAULT_DECK },
+    { id: 'default', name: 'Select', deck: DEFAULT_DECK },
     { id: 'amir', name: 'Amir', deck: AMIR_DECK },
     { id: 'beryl', name: 'Beryl', deck: BERYL_DECK },
     { id: 'cassius', name: 'Cassius', deck: CASSIUS_DECK },
