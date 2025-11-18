@@ -255,19 +255,235 @@
           { id: 7, type: CardType.UNIQUE, name: 'Unlimited Firepower',  imageUrl: './cards/beryl-7.png' },
           { id: 8, type: CardType.UNIQUE, name: 'Heavy Weapons Specialist', isUltimate: true, imageUrl: './cards/beryl-8.png' },
       ];
+      const LUKE_DECK_DATA = [
+          { id: 1, type: CardType.BASIC, name: '', imageUrl: './cards/luke-1.png' },
+          { id: 2, type: CardType.BASIC, name: '', imageUrl: './cards/luke-1.png' },
+          { id: 3, type: CardType.BASIC, name: '', imageUrl: './cards/luke-3.png' },
+          { id: 4, type: CardType.UNIQUE, name: '', imageUrl: './cards/luke-4.png' },
+          { id: 5, type: CardType.UNIQUE, name: '', imageUrl: './cards/luke-5.png' },
+          { id: 6, type: CardType.UNIQUE, name: '', imageUrl: './cards/luke-6.png' },
+          { id: 7, type: CardType.UNIQUE, name: '', imageUrl: './cards/luke-7.png' },
+          { id: 8, type: CardType.UNIQUE, name: '', imageUrl: './cards/luke-8.png', isUltimate: true },
+      ];
+      const KHALIPE_DECK_DATA = [
+          { id: 1, type: CardType.BASIC, name: '', imageUrl: './cards/khalipe-1.png' },
+          { id: 2, type: CardType.BASIC, name: '', imageUrl: './cards/khalipe-2.png' },
+          { id: 3, type: CardType.BASIC, name: '', imageUrl: './cards/khalipe-3.png' },
+          { id: 4, type: CardType.UNIQUE, name: '', imageUrl: './cards/khalipe-4.png' },
+          { id: 5, type: CardType.UNIQUE, name: '', imageUrl: './cards/khalipe-5.png' },
+          { id: 6, type: CardType.UNIQUE, name: '', imageUrl: './cards/khalipe-6.png' },
+          { id: 7, type: CardType.UNIQUE, name: '', imageUrl: './cards/khalipe-7.png' },
+          { id: 8, type: CardType.UNIQUE, name: '', imageUrl: './cards/khalipe-8.png', isUltimate: true },
+      ];
+      const MAGNA_DECK_DATA = [
+          { id: 1, type: CardType.BASIC, name: '', imageUrl: './cards/magna-1.png' },
+          { id: 2, type: CardType.BASIC, name: '', imageUrl: './cards/magna-2.png' },
+          { id: 3, type: CardType.BASIC, name: '', imageUrl: './cards/magna-2.png' },
+          { id: 4, type: CardType.UNIQUE, name: '', imageUrl: './cards/magna-4.png' },
+          { id: 5, type: CardType.UNIQUE, name: '', imageUrl: './cards/magna-5.png' },
+          { id: 6, type: CardType.UNIQUE, name: '', imageUrl: './cards/magna-6.png' },
+          { id: 7, type: CardType.UNIQUE, name: '', imageUrl: './cards/magna-7.png' },
+          { id: 8, type: CardType.UNIQUE, name: '', imageUrl: './cards/magna-8.png', isUltimate: true },
+      ];
+      const ORLEA_DECK_DATA = [
+          { id: 1, type: CardType.BASIC, name: '', imageUrl: './cards/orlea-1.png' },
+          { id: 2, type: CardType.BASIC, name: '', imageUrl: './cards/orlea-1.png' },
+          { id: 3, type: CardType.BASIC, name: '', imageUrl: './cards/orlea-3.png' },
+          { id: 4, type: CardType.UNIQUE, name: '', imageUrl: './cards/orlea-4.png' },
+          { id: 5, type: CardType.UNIQUE, name: '', imageUrl: './cards/orlea-5.png' },
+          { id: 6, type: CardType.UNIQUE, name: '', imageUrl: './cards/orlea-6.png' },
+          { id: 7, type: CardType.UNIQUE, name: '', imageUrl: './cards/orlea-7.png' },
+          { id: 8, type: CardType.UNIQUE, name: '', imageUrl: './cards/orlea-8.png', isUltimate: true },
+      ];
+      const RIN_DECK_DATA = [
+          { id: 1, type: CardType.BASIC, name: '', imageUrl: './cards/rin-1.png' },
+          { id: 2, type: CardType.BASIC, name: '', imageUrl: './cards/rin-2.png' },
+          { id: 3, type: CardType.BASIC, name: '', imageUrl: './cards/rin-3.png' },
+          { id: 4, type: CardType.UNIQUE, name: '', imageUrl: './cards/rin-4.png' },
+          { id: 5, type: CardType.UNIQUE, name: '', imageUrl: './cards/rin-5.png' },
+          { id: 6, type: CardType.UNIQUE, name: '', imageUrl: './cards/rin-6.png' },
+          { id: 7, type: CardType.UNIQUE, name: '', imageUrl: './cards/rin-7.png' },
+          { id: 8, type: CardType.UNIQUE, name: '', imageUrl: './cards/rin-8.png', isUltimate: true },
+      ];
+      const AMIR_DECK_DATA = [
+          { id: 1, type: CardType.BASIC, name: '', imageUrl: './cards/amir-1.png' },
+          { id: 2, type: CardType.BASIC, name: '', imageUrl: './cards/amir-1.png' },
+          { id: 3, type: CardType.BASIC, name: '', imageUrl: './cards/amir-3.png' },
+          { id: 4, type: CardType.UNIQUE, name: '', imageUrl: './cards/amir-4.png' },
+          { id: 5, type: CardType.UNIQUE, name: '', imageUrl: './cards/amir-5.png' },
+          { id: 6, type: CardType.UNIQUE, name: '', imageUrl: './cards/amir-6.png' },
+          { id: 7, type: CardType.UNIQUE, name: '', imageUrl: './cards/amir-7.png' },
+          { id: 8, type: CardType.UNIQUE, name: '', imageUrl: './cards/amir-8.png', isUltimate: true },
+      ];
+      const CASSIUS_DECK_DATA = [
+          { id: 1, type: CardType.BASIC, name: '', imageUrl: './cards/cassius-1.png' },
+          { id: 2, type: CardType.BASIC, name: '', imageUrl: './cards/cassius-2.png' },
+          { id: 3, type: CardType.BASIC, name: '', imageUrl: './cards/cassius-3.png' },
+          { id: 4, type: CardType.UNIQUE, name: '', imageUrl: './cards/cassius-4.png' },
+          { id: 5, type: CardType.UNIQUE, name: '', imageUrl: './cards/cassius-5.png' },
+          { id: 6, type: CardType.UNIQUE, name: '', imageUrl: './cards/cassius-6.png' },
+          { id: 7, type: CardType.UNIQUE, name: '', imageUrl: './cards/cassius-7.png' },
+          { id: 8, type: CardType.UNIQUE, name: '', imageUrl: './cards/cassius-8.png', isUltimate: true },
+      ];
+      const HUGO_DECK_DATA = [
+          { id: 1, type: CardType.BASIC, name: '', imageUrl: './cards/hugo-1.png' },
+          { id: 2, type: CardType.BASIC, name: '', imageUrl: './cards/hugo-1.png' },
+          { id: 3, type: CardType.BASIC, name: '', imageUrl: './cards/hugo-3.png' },
+          { id: 4, type: CardType.UNIQUE, name: '', imageUrl: './cards/hugo-4.png' },
+          { id: 5, type: CardType.UNIQUE, name: '', imageUrl: './cards/hugo-5.png' },
+          { id: 6, type: CardType.UNIQUE, name: '', imageUrl: './cards/hugo-6.png' },
+          { id: 7, type: CardType.UNIQUE, name: '', imageUrl: './cards/hugo-7.png' },
+          { id: 8, type: CardType.UNIQUE, name: '', imageUrl: './cards/hugo-8.png', isUltimate: true },
+      ];
+      const KAYRON_DECK_DATA = [
+          { id: 1, type: CardType.BASIC, name: '', imageUrl: './cards/kayron-1.png' },
+          { id: 2, type: CardType.BASIC, name: '', imageUrl: './cards/kayron-1.png' },
+          { id: 3, type: CardType.BASIC, name: '', imageUrl: './cards/kayron-3.png' },
+          { id: 4, type: CardType.UNIQUE, name: '', imageUrl: './cards/kayron-4.png' },
+          { id: 5, type: CardType.UNIQUE, name: '', imageUrl: './cards/kayron-5.png' },
+          { id: 6, type: CardType.UNIQUE, name: '', imageUrl: './cards/kayron-6.png' },
+          { id: 7, type: CardType.UNIQUE, name: '', imageUrl: './cards/kayron-7.png' },
+          { id: 8, type: CardType.UNIQUE, name: '', imageUrl: './cards/kayron-8.png', isUltimate: true },
+      ];
+      const LUCAS_DECK_DATA = [
+          { id: 1, type: CardType.BASIC, name: '', imageUrl: './cards/lucas-1.png' },
+          { id: 2, type: CardType.BASIC, name: '', imageUrl: './cards/lucas-1.png' },
+          { id: 3, type: CardType.BASIC, name: '', imageUrl: './cards/lucas-3.png' },
+          { id: 4, type: CardType.UNIQUE, name: '', imageUrl: './cards/lucas-4.png' },
+          { id: 5, type: CardType.UNIQUE, name: '', imageUrl: './cards/lucas-5.png' },
+          { id: 6, type: CardType.UNIQUE, name: '', imageUrl: './cards/lucas-6.png' },
+          { id: 7, type: CardType.UNIQUE, name: '', imageUrl: './cards/lucas-7.png' },
+          { id: 8, type: CardType.UNIQUE, name: '', imageUrl: './cards/lucas-8.png', isUltimate: true },
+      ];
+      const MARIBELL_DECK_DATA = [
+          { id: 1, type: CardType.BASIC, name: '', imageUrl: './cards/maribell-1.png' },
+          { id: 2, type: CardType.BASIC, name: '', imageUrl: './cards/maribell-2.png' },
+          { id: 3, type: CardType.BASIC, name: '', imageUrl: './cards/maribell-3.png' },
+          { id: 4, type: CardType.UNIQUE, name: '', imageUrl: './cards/maribell-4.png' },
+          { id: 5, type: CardType.UNIQUE, name: '', imageUrl: './cards/maribell-5.png' },
+          { id: 6, type: CardType.UNIQUE, name: '', imageUrl: './cards/maribell-6.png' },
+          { id: 7, type: CardType.UNIQUE, name: '', imageUrl: './cards/maribell-7.png' },
+          { id: 8, type: CardType.UNIQUE, name: '', imageUrl: './cards/maribell-8.png', isUltimate: true },
+      ];
+      const MEILIN_DECK_DATA = [
+          { id: 1, type: CardType.BASIC, name: '', imageUrl: './cards/meilin-1.png' },
+          { id: 2, type: CardType.BASIC, name: '', imageUrl: './cards/meilin-2.png' },
+          { id: 3, type: CardType.BASIC, name: '', imageUrl: './cards/meilin-3.png' },
+          { id: 4, type: CardType.UNIQUE, name: '', imageUrl: './cards/meilin-4.png' },
+          { id: 5, type: CardType.UNIQUE, name: '', imageUrl: './cards/meilin-5.png' },
+          { id: 6, type: CardType.UNIQUE, name: '', imageUrl: './cards/meilin-6.png' },
+          { id: 7, type: CardType.UNIQUE, name: '', imageUrl: './cards/meilin-7.png' },
+          { id: 8, type: CardType.UNIQUE, name: '', imageUrl: './cards/meilin-8.png', isUltimate: true },
+      ];
+      const NIA_DECK_DATA = [
+          { id: 1, type: CardType.BASIC, name: '', imageUrl: './cards/nia-1.png' },
+          { id: 2, type: CardType.BASIC, name: '', imageUrl: './cards/nia-2.png' },
+          { id: 3, type: CardType.BASIC, name: '', imageUrl: './cards/nia-2.png' },
+          { id: 4, type: CardType.UNIQUE, name: '', imageUrl: './cards/nia-4.png' },
+          { id: 5, type: CardType.UNIQUE, name: '', imageUrl: './cards/nia-5.png' },
+          { id: 6, type: CardType.UNIQUE, name: '', imageUrl: './cards/nia-6.png' },
+          { id: 7, type: CardType.UNIQUE, name: '', imageUrl: './cards/nia-7.png' },
+          { id: 8, type: CardType.UNIQUE, name: '', imageUrl: './cards/nia-8.png', isUltimate: true },
+      ];
+      const OWEN_DECK_DATA = [
+          { id: 1, type: CardType.BASIC, name: '', imageUrl: './cards/owen-1.png' },
+          { id: 2, type: CardType.BASIC, name: '', imageUrl: './cards/owen-1.png' },
+          { id: 3, type: CardType.BASIC, name: '', imageUrl: './cards/owen-3.png' },
+          { id: 4, type: CardType.UNIQUE, name: '', imageUrl: './cards/owen-4.png' },
+          { id: 5, type: CardType.UNIQUE, name: '', imageUrl: './cards/owen-5.png' },
+          { id: 6, type: CardType.UNIQUE, name: '', imageUrl: './cards/owen-6.png' },
+          { id: 7, type: CardType.UNIQUE, name: '', imageUrl: './cards/owen-7.png' },
+          { id: 8, type: CardType.UNIQUE, name: '', imageUrl: './cards/owen-8.png', isUltimate: true },
+      ];
+      const REI_DECK_DATA = [
+          { id: 1, type: CardType.BASIC, name: '', imageUrl: './cards/rei-1.png' },
+          { id: 2, type: CardType.BASIC, name: '', imageUrl: './cards/rei-1.png' },
+          { id: 3, type: CardType.BASIC, name: '', imageUrl: './cards/rei-3.png' },
+          { id: 4, type: CardType.UNIQUE, name: '', imageUrl: './cards/rei-4.png' },
+          { id: 5, type: CardType.UNIQUE, name: '', imageUrl: './cards/rei-5.png' },
+          { id: 6, type: CardType.UNIQUE, name: '', imageUrl: './cards/rei-6.png' },
+          { id: 7, type: CardType.UNIQUE, name: '', imageUrl: './cards/rei-7.png' },
+          { id: 8, type: CardType.UNIQUE, name: '', imageUrl: './cards/rei-8.png', isUltimate: true },
+      ];
+      const SELENA_DECK_DATA = [
+          { id: 1, type: CardType.BASIC, name: '', imageUrl: './cards/selena-1.png' },
+          { id: 2, type: CardType.BASIC, name: '', imageUrl: './cards/selena-1.png' },
+          { id: 3, type: CardType.BASIC, name: '', imageUrl: './cards/selena-3.png' },
+          { id: 4, type: CardType.UNIQUE, name: '', imageUrl: './cards/selena-4.png' },
+          { id: 5, type: CardType.UNIQUE, name: '', imageUrl: './cards/selena-5.png' },
+          { id: 6, type: CardType.UNIQUE, name: '', imageUrl: './cards/selena-6.png' },
+          { id: 7, type: CardType.UNIQUE, name: '', imageUrl: './cards/selena-7.png' },
+          { id: 8, type: CardType.UNIQUE, name: '', imageUrl: './cards/selena-8.png', isUltimate: true },
+      ];
+      const TRESSA_DECK_DATA = [
+          { id: 1, type: CardType.BASIC, name: '', imageUrl: './cards/tressa-1.png' },
+          { id: 2, type: CardType.BASIC, name: '', imageUrl: './cards/tressa-1.png' },
+          { id: 3, type: CardType.BASIC, name: '', imageUrl: './cards/tressa-3.png' },
+          { id: 4, type: CardType.UNIQUE, name: '', imageUrl: './cards/tressa-4.png' },
+          { id: 5, type: CardType.UNIQUE, name: '', imageUrl: './cards/tressa-5.png' },
+          { id: 6, type: CardType.UNIQUE, name: '', imageUrl: './cards/tressa-6.png' },
+          { id: 7, type: CardType.UNIQUE, name: '', imageUrl: './cards/tressa-7.png' },
+          { id: 8, type: CardType.UNIQUE, name: '', imageUrl: './cards/tressa-8.png', isUltimate: true },
+      ];
+      const YUKI_DECK_DATA = [
+          { id: 1, type: CardType.BASIC, name: '', imageUrl: './cards/yuki-1.jpg' },
+          { id: 2, type: CardType.BASIC, name: '', imageUrl: './cards/yuki-2.jpg' },
+          { id: 3, type: CardType.BASIC, name: '', imageUrl: './cards/yuki-3.jpg' },
+          { id: 4, type: CardType.UNIQUE, name: '', imageUrl: './cards/yuki-4.jpg' },
+          { id: 5, type: CardType.UNIQUE, name: '', imageUrl: './cards/yuki-5.jpg' },
+          { id: 6, type: CardType.UNIQUE, name: '', imageUrl: './cards/yuki-6.jpg' },
+          { id: 7, type: CardType.UNIQUE, name: '', imageUrl: './cards/yuki-7.jpg' },
+          { id: 8, type: CardType.UNIQUE, name: '', imageUrl: './cards/yuki-8.jpg', isUltimate: true },
+      ];
       const DEFAULT_DECK = createDeckFromData(DEFAULT_DECK_DATA);
+      const AMIR_DECK = createDeckFromData(AMIR_DECK_DATA);
       const MIKA_DECK = createDeckFromData(MIKA_DECK_DATA);
       const HARU_DECK = createDeckFromData(HARU_DECK_DATA);
       const RENOA_DECK = createDeckFromData(RENOA_DECK_DATA);
       const VERONICA_DECK = createDeckFromData(VERONICA_DECK_DATA);
       const BERYL_DECK = createDeckFromData(BERYL_DECK_DATA);
+      const KHALIPE_DECK = createDeckFromData(KHALIPE_DECK_DATA);
+      const LUKE_DECK = createDeckFromData(LUKE_DECK_DATA);
+      const MAGNA_DECK = createDeckFromData(MAGNA_DECK_DATA);
+      const ORLEA_DECK = createDeckFromData(ORLEA_DECK_DATA);
+      const RIN_DECK = createDeckFromData(RIN_DECK_DATA);
+      const CASSIUS_DECK = createDeckFromData(CASSIUS_DECK_DATA);
+      const HUGO_DECK = createDeckFromData(HUGO_DECK_DATA);
+      const KAYRON_DECK = createDeckFromData(KAYRON_DECK_DATA);
+      const LUCAS_DECK = createDeckFromData(LUCAS_DECK_DATA);
+      const MARIBELL_DECK = createDeckFromData(MARIBELL_DECK_DATA);
+      const MEILIN_DECK = createDeckFromData(MEILIN_DECK_DATA);
+      const NIA_DECK = createDeckFromData(NIA_DECK_DATA);
+      const OWEN_DECK = createDeckFromData(OWEN_DECK_DATA);
+      const REI_DECK = createDeckFromData(REI_DECK_DATA);
+      const SELENA_DECK = createDeckFromData(SELENA_DECK_DATA);
+      const TRESSA_DECK = createDeckFromData(TRESSA_DECK_DATA);
+      const YUKI_DECK = createDeckFromData(YUKI_DECK_DATA);
       const COMBATANTS = [
           { id: 'default', name: 'Default', deck: DEFAULT_DECK },
-          { id: 'mika', name: 'Mika', deck: MIKA_DECK },
-          { id: 'haru', name: 'Haru', deck: HARU_DECK },
-          { id: 'renoa', name: 'Renoa', deck: RENOA_DECK },
-          { id: 'veronica', name: 'Veronica', deck: VERONICA_DECK },
+          { id: 'amir', name: 'Amir', deck: AMIR_DECK },
           { id: 'beryl', name: 'Beryl', deck: BERYL_DECK },
+          { id: 'cassius', name: 'Cassius', deck: CASSIUS_DECK },
+          { id: 'haru', name: 'Haru', deck: HARU_DECK },
+          { id: 'hugo', name: 'Hugo', deck: HUGO_DECK },
+          { id: 'kayron', name: 'Kayron', deck: KAYRON_DECK },
+          { id: 'khalipe', name: 'Khalipe', deck: KHALIPE_DECK },
+          { id: 'lucas', name: 'Lucas', deck: LUCAS_DECK },
+          { id: 'luke', name: 'Luke', deck: LUKE_DECK },
+          { id: 'magna', name: 'Magna', deck: MAGNA_DECK },
+          { id: 'maribell', name: 'Maribell', deck: MARIBELL_DECK },
+          { id: 'meilin', name: 'Meilin', deck: MEILIN_DECK },
+          { id: 'mika', name: 'Mika', deck: MIKA_DECK },
+          { id: 'nia', name: 'Nia', deck: NIA_DECK },
+          { id: 'orlea', name: 'Orlea', deck: ORLEA_DECK },
+          { id: 'owen', name: 'Owen', deck: OWEN_DECK },
+          { id: 'renoa', name: 'Renoa', deck: RENOA_DECK },
+          { id: 'rei', name: 'Rei', deck: REI_DECK },
+          { id: 'rin', name: 'Rin', deck: RIN_DECK },
+          { id: 'selena', name: 'Selena', deck: SELENA_DECK },
+          { id: 'tressa', name: 'Tressa', deck: TRESSA_DECK },
+          { id: 'veronica', name: 'Veronica', deck: VERONICA_DECK },
+          { id: 'yuki', name: 'Yuki', deck: YUKI_DECK },    
       ];
       
       // --- From state.ts ---
