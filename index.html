@@ -77,9 +77,9 @@
       }
       const calculateCardScore = (card, initialCardIds) => {
         let score = 0;
-        const isNewlyAdded = !initialCardIds.has(card.id) && !card.isDuplicate;
+        const isNewCard = !initialCardIds.has(card.id);
         const isConvertedToNeutral = card.type === CardType.NEUTRAL && card.originalType !== CardType.NEUTRAL;
-        if (isNewlyAdded) {
+        if (isNewCard) {
           if (card.type === CardType.UNIQUE) score += POINTS.UNIQUE_CARD;
           else if (card.type === CardType.MONSTER) score += POINTS.MONSTER_CARD;
           else if (card.type === CardType.NEUTRAL) score += POINTS.NEUTRAL_CARD;
