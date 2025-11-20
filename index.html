@@ -46,8 +46,8 @@
     <script type="text/babel">
       // --- From constants.ts ---
       const POINTS = {
-        NEUTRAL_CARD: 20,
         UNIQUE_CARD: 0,
+        NEUTRAL_CARD: 20,
         MONSTER_CARD: 80,
         FORBIDDEN_CARD: 20,
         EPIPHANY_BONUS: 10,
@@ -88,13 +88,19 @@
           score += POINTS.NEUTRAL_CARD;
         }
 
-        if (card.type !== CardType.BASIC) {
-          if (card.state === CardState.EPIPHANY && card.type !== CardType.UNIQUE) {
-            score += POINTS.EPIPHANY_BONUS;
-          } else if (card.state === CardState.DIVINE_EPIPHANY) {
-            score += POINTS.DIVINE_EPIPHANY_BONUS;
+          if (card.type !== CardType.BASIC) {
+            // Epiphany: add epiphany bonus for non-unique cards
+            if (card.state === CardState.EPIPHANY && card.type !== CardType.UNIQUE) {
+              score += POINTS.EPIPHANY_BONUS;
+            }
+            // Divine Epiphany: stack epiphany bonus (for non-unique) plus divine bonus
+            if (card.state === CardState.DIVINE_EPIPHANY) {
+              if (card.type !== CardType.UNIQUE) {
+                score += POINTS.EPIPHANY_BONUS;
+              }
+              score += POINTS.DIVINE_EPIPHANY_BONUS;
+            }
           }
-        }
         return score;
       };
       const calculateTotalScore = (state, initialCardIds) => {
